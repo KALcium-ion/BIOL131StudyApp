@@ -9,6 +9,7 @@ _ = questions.layout("sg1", "q1")
 app = dash.Dash(__name__,
                 suppress_callback_exceptions = True)
 server = app.server #exposes the Flask server for Gunicorn 
+app.title = "Interactive Study Guide"
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),

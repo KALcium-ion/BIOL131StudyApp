@@ -46,7 +46,7 @@ layout = html.Div([
                 html.P("Happy Studying!", className="card-text")
             ], style={'textAlign': 'left', 'fontSize': '20px'})
         ], className="mt-4 mb-4 shadow-sm")
-    ]),
+    ], style = {'fontFamily':'Arial'}),
 
     # "How to Use This Site" button
     html.Div([
