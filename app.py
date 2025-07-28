@@ -1,4 +1,5 @@
 import dash
+import os
 from dash import html, dcc, Input, Output
 from pages import sg1, sg2, sg3, sg4, questions, quizzes, welcome, study
 
@@ -7,6 +8,7 @@ _ = questions.layout("sg1", "q1")
 
 app = dash.Dash(__name__,
                 suppress_callback_exceptions = True)
+server = app.server #exposes the Flask server for Gunicorn 
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -52,4 +54,5 @@ def display_page(pathname):
     return html.H1("404 - Page not found")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8050))
+    app.run_server(host = "0.0.0.0", port=port)
